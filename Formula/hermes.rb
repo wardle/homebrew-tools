@@ -1,15 +1,21 @@
 class Hermes < Formula
   desc "SNOMED CT terminology server, library and tools"
   homepage "https://github.com/wardle/hermes"
-  url "https://github.com/wardle/hermes/releases/download/v1.4.1560/hermes-1.4.1560.jar"
-  sha256 "019feeb660b3c3dc572d1e39da0356a7e16e5488a74bd10e19434c72fac5a0e7"
+  url "https://github.com/wardle/hermes/releases/download/v1.4.1563/hermes-1.4.1563-lucene10.jar"
+  sha256 "26706d3e10a350c0f8eaadfb9494bde2eb8a62808fd971d1ba71f7bfa8656fff"
   license "EPL-2.0"
 
-  depends_on "openjdk@17"
+  depends_on "openjdk"
 
   def install
-    libexec.install "hermes-#{version}.jar" => "hermes.jar"
-    bin.write_jar_script libexec/"hermes.jar", "hermes"
+    libexec.install "hermes-#{version}-lucene10.jar" => "hermes.jar"
+    (bin/"hermes").write <<~EOS
+      #!/bin/bash
+      exec "#{Formula["openjdk"].opt_bin}/java" \
+        --enable-native-access=ALL-UNNAMED \
+        --sun-misc-unsafe-memory-access=allow \
+        -jar "#{libexec}/hermes.jar" "$@"
+    EOS
   end
 
   test do
