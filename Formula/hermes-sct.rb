@@ -1,4 +1,4 @@
-class Hermes < Formula
+class HermesSct < Formula
   desc "SNOMED CT terminology server, library and tools"
   homepage "https://github.com/wardle/hermes"
   url "https://github.com/wardle/hermes/releases/download/v1.4.1560/hermes-1.4.1560.jar"
