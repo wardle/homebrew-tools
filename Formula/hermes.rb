@@ -13,9 +13,11 @@ class Hermes < Formula
     (bin/"hermes").write <<~EOS
       #!/bin/bash
       exec "#{Formula["openjdk"].opt_bin}/java" \
+        --add-modules jdk.incubator.vector \
         --enable-native-access=ALL-UNNAMED \
         --sun-misc-unsafe-memory-access=allow \
-        -jar "#{libexec}/hermes.jar" "$@"
+        -jar "#{libexec}/hermes.jar" "$@" \
+        2> >(grep -v -E 'incubator|PanamaVectorizationProvider' >&2)
     EOS
   end
 
