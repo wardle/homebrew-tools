@@ -1,9 +1,9 @@
 class Hermes < Formula
   desc "SNOMED CT terminology server, library and tools"
   homepage "https://github.com/wardle/hermes"
-  url "https://github.com/wardle/hermes/releases/download/v1.4.1582/hermes-1.4.1582-lucene10.jar"
-  version "1.4.1582"
-  sha256 "30733f832e9a8049860ee2afb6ca35478092c7f31425507c414618f69a4f6ce2"
+  url "https://github.com/wardle/hermes/releases/download/v1.4.1585/hermes-1.4.1585-lucene10.jar"
+  version "1.4.1585"
+  sha256 "456116efffc35aa7c3008c8828c1123822dc888398d5b4d51c5e94e68b2e8af2"
   license "EPL-2.0"
 
   depends_on "openjdk"
